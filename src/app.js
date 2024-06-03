@@ -24,7 +24,7 @@ app.use(hpp()); // Ignoring -> token=x&token=y -> token = [x,y]
 
 app.use(cookie());
 
-app.set(express.static(path.resolve(__dirname, '..', 'public', 'static')));
+app.use(express.static(path.resolve(__dirname, '..', 'public', 'static')));
 
 app.use(morgan('dev'));
 
