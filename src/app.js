@@ -14,15 +14,18 @@ import hpp from 'hpp';
 const app = express();
 
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors());
-
 //app.use(helmet())
+app.use(cors());
 
 app.use(hpp()); // Ignoring -> token=x&token=y -> token = [x,y]
 
+app.set(express.static(path.resolve(__dirname, '..', 'public', 'static')));
+
 app.use(morgan('dev'));
+
+app.set('view engine', 'ejs');
+app.set('views', path.resolve(__dirname, '..', 'public', 'views'));
 
 export { app };
