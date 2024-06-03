@@ -1,0 +1,7 @@
+{
+  "name": "nodejs-auth-passwordless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lucasbernardol <lucasbernardo.touch@gmail.com>",
+  "license": "MIT"
+}
