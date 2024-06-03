@@ -6,6 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import express from 'express';
 import helmet from 'helmet';
 
+import cookie from 'cookie-parser';
 import morgan from 'morgan';
 
 import cors from 'cors';
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use(hpp()); // Ignoring -> token=x&token=y -> token = [x,y]
+
+app.use(cookie());
 
 app.set(express.static(path.resolve(__dirname, '..', 'public', 'static')));
 
