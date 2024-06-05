@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-br" translate="yes">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="module" src="/scripts/completedSetup.js"></script>
+    <script defer src="/scripts/dashboard.js"></script>
+
+    <title>Dashboard</title>
+  </head>
+  <body data-id="app">
+    <div class="container" data-id="container">
+      <h1>Dashboard</h1>
+      <div><%= user %></div>
+
+      <a href data-id="logout" style="color: red">Encerrar sessão</a>
+    </div>
+  </body>
+</html>

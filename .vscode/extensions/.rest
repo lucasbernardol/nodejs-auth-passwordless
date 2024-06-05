@@ -1,0 +1,13 @@
+## eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWUzMDQ5YmEwMTE1NmQ1Y2JiOWQ1MiIsImlhdCI6MTcxNzQ0ODc3NywiZXhwIjoxNzE3NDQ5MDc3fQ.QOfUzvRngKB9QYInpn7bmQHDctvp4mJk5B_FPbtztFo
+
+### SIGN-IN/SIGN-Up
+POST http://localhost:3333/api/sessions/sign-in
+Content-Type: application/json
+
+{
+  "email": "lucas.touch@gmail.com"
+}
+
+### Authenticate
+POST http://localhost:3333/api/sessions/authenticate/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWUzMDQ5YmEwMTE1NmQ1Y2JiOWQ1MiIsImlhdCI6MTcxNzQ0ODc3NywiZXhwIjoxNzE3NDQ5MDc3fQ.QOfUzvRngKB9QYInpn7bmQHDctvp4mJk5B_FPbtztFo
+Content-Type: application/json

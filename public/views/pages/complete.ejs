@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finalizar cadastro</title>
+  </head>
+  <body>
+    <form action="#" data-id="form">
+      <fieldset>
+        <legend>Finalize seu cadastro</legend>
+
+        <div class="form-group">
+          <label for="name">Nome completo e/ou composto</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            autocomplete
+            placeholder="Nome completo" />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Apelido (nome de usuário)</label>
+          <input
+            id="username"
+            type="text"
+            name="username"
+            required
+            autocomplete
+            placeholder="Nome de usuário ou apelido" />
+        </div>
+      </fieldset>
+
+      <button>Finalizar</button>
+    </form>
+
+    <script type="module">
+      import '/scripts/hooks/verifyCompletedSetupHook.js';
+
+      const nameInput = document.getElementById('name');
+      const usernameInput = document.getElementById('username');
+
+      const form = document.querySelector('[data-id="form"]');
+
+      async function checkSignCompleteSetup() {
+        const response = await fetch('/api/users/sign-in/completed', {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          method: 'GET',
+        });
+
+        const { finishedAt } = await response.json();
+
+        return { finishedAt };
+      }
+
+      async function checkUserNameExists(username) {
+        const response = await fetch('/api/users/available', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username }),
+        });
+
+        return await response.json();
+      }
+
+      // form events
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const name = nameInput.value;
+        const username = usernameInput.value.trim().toLowerCase();
+
+        // spinner/etc
+        const { available } = await checkUserNameExists(username);
+
+        if (!available) {
+          return alert('Nome de usuário indisponível. Tente novamente!');
+          usernameInput.value = '';
+        }
+
+        const response = await fetch('/api/users/setup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, username }),
+        });
+
+        if (response.status === 204) {
+          localStorage.setItem('finish', 1);
+
+          return location.assign('/dashboard');
+        }
+
+        alert('Houve um erro durante o processo. Tente novamente!');
+      });
+
+      window.addEventListener('load', async () => {
+        // Check if personal information (auth cookie only)
+
+        const { finishedAt } = await checkSignCompleteSetup();
+
+        if (finishedAt) {
+          localStorage.setItem('finish', '1');
+
+          return location.assign('/dashboard');
+        }
+
+        localStorage.setItem('finish', 0);
+      });
+    </script>
+  </body>
+</html>

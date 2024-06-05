@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/styles/components/spinner.css" />
+    <title>Authenticação</title>
+  </head>
+  <body data-id="app">
+    <div class="container" data-id="container">
+      <div class="spinner"></div>
+    </div>
+
+    <script>
+      window.addEventListener('load', async () => {
+        localStorage.removeItem('finish');
+
+        const token = new URLSearchParams(location.search).get('token');
+
+        if (!token) {
+          return location.assign('/sign-in');
+        }
+
+        try {
+          const response = await fetch(
+            `/api/sessions/authenticate/?token=${token}`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            },
+          );
+
+          const content = await response.json();
+
+          if (response.status !== 200) {
+            return location.assign('/sign-in'); // check email page
+          }
+
+          if (content.finishedAt) {
+            localStorage.setItem('finish', '1');
+
+            return location.assign('/dashboard');
+          }
+
+          localStorage.setItem('finish', '0');
+          return location.assign('/sign-in/complete');
+        } catch (error) {
+          console.log(error);
+          alert('Invalid token');
+        }
+      });
+    </script>
+  </body>
+</html>

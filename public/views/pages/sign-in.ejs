@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entre ou cadastre-se</title>
+  </head>
+  <body>
+    <form action="#" data-id="form">
+      <fieldset>
+        <legend>Faça login usando o endereço de e-email</legend>
+
+        <div class="form-group">
+          <label for="email"></label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            autocomplete
+            placeholder="Endereço de e-amil" />
+        </div>
+      </fieldset>
+
+      <button>Enviar</button>
+    </form>
+
+    <script>
+      const form = document.querySelector('[data-id="form"]');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+
+        try {
+          const response = await fetch('/api/sessions/sign-in', {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ email }),
+          });
+
+          if (response.status === 202) {
+            alert('Verifque seu e-mail!');
+          }
+        } catch (error) {
+          console.log(error);
+          alert('error');
+        }
+      });
+    </script>
+  </body>
+</html>

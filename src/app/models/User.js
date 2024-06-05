@@ -20,7 +20,9 @@ const schema = new Schema(
     username: {
       type: String,
       required: false,
-      unique: true,
+      // unique: true,
+      trim: true,
+      lowercase: true,
       default: null,
     },
 
@@ -30,6 +32,7 @@ const schema = new Schema(
       unique: true,
       trim: true,
       lowercase: true,
+      nullable: false,
     },
 
     activatedAt: {
