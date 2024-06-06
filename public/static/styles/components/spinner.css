@@ -1,15 +1,55 @@
 .spinner {
-  width: 50px;
-  height: 50px;
+  --_spinner-w: 1.8rem;
+  --_spinner-h: 1.8rem;
+
+  --_spinner-stroke: 2px;
+
+  --_spinner-thumb-color: var(--background-color);
+
+  width: var(--_spinner-w);
+  height: var(--_spinner-h);
 
   border-radius: 50%;
 
-  /* background-color: transparent; */
+  background-color: transparent;
 
-  border: 2px solid #f0f0f5;
+  border: var(--_spinner-stroke) solid var(--_spinner-thumb-color);
   border-top-color: #7159c1;
 
   animation: Spin 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.spinner-loading.close {
+  width: 0;
+  height: 0;
+
+  background: transparent;
+  visibility: hidden;
+}
+
+.spinner-loading {
+  overflow: hidden;
+
+  z-index: 99;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-white);
+}
+
+.spinner-loading .spinner {
+  --_spinner-w: 4.6rem;
+  --_spinner-h: 4.6rem;
 }
 
 @keyframes Spin {

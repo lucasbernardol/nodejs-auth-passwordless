@@ -1,0 +1,95 @@
+.check-mail {
+  width: 100%;
+  max-width: 64rem;
+
+  margin: 0 auto;
+  margin-top: 4rem;
+
+  padding: 6.4rem 7rem;
+  border-radius: 0.4rem;
+
+  /* text-align: center; */
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+}
+
+.check-mail__img {
+  width: 8.2rem;
+  height: 8.2rem;
+
+  margin-bottom: 4rem;
+}
+
+.check-mail__title {
+  margin-bottom: 2rem;
+
+  font-size: 3.8rem;
+  font-weight: 700;
+
+  color: var(--color-text-dark);
+}
+
+.check-mail__text {
+  font-size: 1.8rem;
+  font-weight: 400;
+
+  color: var(--color-text);
+
+  line-height: 1.6;
+}
+
+.check-mail__email {
+  display: block;
+  font-weight: 700;
+
+  color: var(--color-text-dark);
+  line-height: 4;
+
+  opacity: 0.7;
+
+  text-decoration: underline;
+}
+
+.problem {
+  position: relative;
+
+  padding-top: 2rem;
+
+  margin-top: 4rem;
+}
+
+.problem::before {
+  opacity: 0.7;
+
+  position: absolute;
+
+  content: '';
+
+  width: 40%;
+
+  top: 0;
+  left: 0;
+
+  height: 2px;
+
+  background-color: var(--color-gray);
+}
+
+.problem__message {
+  font-size: 1.4rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.problem__resend {
+  line-height: 1.6;
+  color: var(--color-primary-light);
+  font-weight: 500;
+  text-decoration: underline;
+
+  font-size: 1.6rem;
+}
+
+.problem__resend:hover {
+  color: var(--color-primary-dark);
+}

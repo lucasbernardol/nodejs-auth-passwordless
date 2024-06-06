@@ -17,6 +17,7 @@ const { guard, verifyIdentity } = authenticate();
 
 routes.get('/', guard(), HomeController.home);
 routes.get('/sign-in', guard(), AuthenticateController.signIn);
+routes.get('/resend-email', guard(), AuthenticateController.resend);
 routes.get('/authenticate', AuthenticateController.authenticate);
 
 /**

@@ -7,6 +7,14 @@ export class AuthenticateController {
     }
   }
 
+  async resend(request, response, next) {
+    try {
+      return response.render('pages/resend-email');
+    } catch (error) {
+      return next(error);
+    }
+  }
+
   async authenticate(request, response, next) {
     try {
       return response.render('pages/authenticate', { state: {} });
