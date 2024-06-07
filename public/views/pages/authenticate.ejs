@@ -23,6 +23,7 @@
         }
 
         try {
+          // Cookies
           const response = await fetch(
             `/api/sessions/authenticate/?token=${token}`,
             {

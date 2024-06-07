@@ -35,6 +35,13 @@ const schema = new Schema(
       nullable: false,
     },
 
+    gravatar: {
+      type: String,
+      required: false,
+      trim: true,
+      default: null,
+    },
+
     activatedAt: {
       type: Number,
       required: false,

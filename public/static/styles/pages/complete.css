@@ -1,0 +1,52 @@
+.container {
+  --_c-padding: 0;
+}
+
+body {
+  background: var(--color-white);
+}
+
+.illustration {
+  background-image: url('/assets/profile-details.svg');
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  background-position: center;
+}
+
+.form-group:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.form__subtitle {
+  display: block;
+  margin-top: 2.8rem;
+
+  font-size: 2.2rem;
+  color: var(--color-text-dark);
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+.form-group__label {
+  display: block;
+
+  margin-bottom: 0.8rem;
+
+  font-size: 1.8rem;
+  font-weight: 500;
+
+  color: var(--color-text);
+
+  line-height: 1.4;
+}
+
+.form-group__input::placeholder {
+  font-size: 1.6rem;
+}
+
+.form-button {
+  margin-top: 3rem;
+}

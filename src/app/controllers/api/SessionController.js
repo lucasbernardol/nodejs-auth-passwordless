@@ -1,6 +1,7 @@
 import { promisify } from 'node:util';
 
 import jwt from 'jsonwebtoken';
+import gravatar from 'gravatar';
 import { StatusCodes } from 'http-status-codes';
 
 import { User } from '../../models/User.js';
@@ -24,7 +25,7 @@ export class SessionController {
 
       const user = await User.findOneAndUpdate(
         { email },
-        { email },
+        { email, gravatar: gravatar.url(email, { default: 'mp', size: 128 }) },
         {
           upsert: true,
           new: true,

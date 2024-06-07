@@ -1,24 +1,43 @@
+import Spinner from '/scripts/classes/Spinner.js';
+
 const form = document.querySelector('[data-id="form"]');
 
-form.addEventListener('submit', async (event) => {
+const emailField = (target) => target.email.value.trim().toLowerCase();
+
+async function signIn({ email }) {
+  const response = await fetch('/api/sessions/sign-in', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+
+  const isAuthenticated = response.status === 202; // no content
+
+  return { isAuthenticated };
+}
+
+async function handleFormSubmit(event) {
   event.preventDefault();
 
-  const email = event.target.email.value;
+  const { target } = event;
+
+  const email = emailField(target);
+
+  Spinner.show();
 
   try {
-    const response = await fetch('/api/sessions/sign-in', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({ email }),
-    });
+    const { isAuthenticated } = await signIn({ email });
 
-    if (response.status === 202) {
-      alert('Verifque seu e-mail!');
+    Spinner.close();
+
+    if (isAuthenticated) {
+      return location.assign(`/resend-email/?email=${email}`);
     }
   } catch (error) {
-    console.log(error);
-    alert('error');
+    console.error(error);
   }
-});
+}
+
+form.addEventListener('submit', handleFormSubmit);

@@ -8,7 +8,7 @@ export class DashboardController {
       const user = await User.findById(userId);
 
       return response.render('pages/dashboard', {
-        user: JSON.stringify(user, null, 2),
+        user,
       });
     } catch (error) {
       return next(error);
