@@ -173,6 +173,15 @@
   line-height: 1;
 }
 
+.menu-profile__email {
+  margin-top: 0.4rem;
+
+  font-size: 1.4rem;
+  color: var(--color-text);
+
+  line-height: 1.4;
+}
+
 .menu-links {
   display: flex;
 
