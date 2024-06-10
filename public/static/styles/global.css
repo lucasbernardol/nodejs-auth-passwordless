@@ -3,7 +3,7 @@
 
   --color-white: #ffffff;
 
-  --color-red: hsl(0, 93%, 58%);
+  --color-red: hsla(0, 100%, 66%, 0.8);
 
   --color-text-dark: #00101c;
   --color-text: hsla(206, 100%, 5%, 0.6);
@@ -73,6 +73,10 @@ button:has(> img) {
 
 fieldset {
   border: 0;
+}
+
+ul {
+  list-style: none;
 }
 
 img {

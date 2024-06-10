@@ -22,27 +22,59 @@
     <script type="module" src="/scripts/completedSetup.js"></script>
     <script defer type="module" src="/scripts/dashboard.js"></script>
 
-    <title>Dashboard</title>
+    <title>Dashboard | UserLess</title>
   </head>
-  <body>
+  <body data-id="body">
     <div class="container" data-id="container">
-      <header class="header" data-id="header"></header>
+      <header class="header" data-id="header">
+        <nav class="navigation" data-id="navigation">
+          <div class="dropdown" data-id="dropdown">
+            <input id="menu" type="checkbox" name="dropdown-input" hidden />
 
-      <div class="profile-card">
-        <div class="profile-avatar">
-          <img
-            src="<%= user.gravatar %>"
-            alt="<%= user.name %>"
-            class="profile-avatar__img"
-          />
-        </div>
+            <label for="menu" class="profile">
+              <div class="profile__avatar avatar">
+                <img
+                  src="<%= user.gravatar %>"
+                  alt="<%= user.name %>"
+                  class="profile__avatar-img avatar__img"
+                />
+              </div>
 
-        <span class="profile-card__name"><%= user.name %></span>
+              <span class="profile__name"><%= user.name %></span>
+            </label>
 
-        <a href class="logout" data-id="logout" style="color: red"
-          >Encerrar sessão</a
-        >
-      </div>
+            <div class="menu" data-id="menu">
+              <div class="menu-profile">
+                <div class="menu-profile__avatar avatar">
+                  <img
+                    src="<%= user.gravatar %>"
+                    alt="<%= user.name %>"
+                    class="menu-profile__avatar avatar__img"
+                  />
+                </div>
+
+                <span class="menu-profile__name"><%= user.name %></span>
+              </div>
+
+              <div class="menu-navigation">
+                <ul class="menu-links">
+                  <li class="menu-links__item menu-links__item--logout">
+                    <a href="#" data-id="logout">
+                      <img
+                        src="/assets/icons/leave.png"
+                        alt="Encerrar sessão"
+                      />
+                      Sair
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <p class="account-id">Id: <%= user._id %></p>
     </div>
 
     <div class="spinner-loading" data-id="loading">

@@ -13,16 +13,50 @@
     <link rel="stylesheet" type="text/css" href="/styles/global.css" />
     <link rel="stylesheet" type="text/css" href="/styles/pages/home.css" />
 
-    <title>Magic Link</title>
+    <title>UserLess</title>
   </head>
   <body data-id="body">
     <div class="container" data-id="container">
-      <main class="main" data-id="main">
-        <h1 class="title">
-          Acesse a plataforma e descruba um mondo de possibilidades
-        </h1>
+      <header class="header">
+        <nav class="navigation">
+          <h1 class="navigation__brand">Userless</h1>
 
-        <a href="/sign-in" class="sign">Entre ou cadastre-se</a>
+          <ul class="navigation__links">
+            <li class="navigation__links-item navigation__links-item--disabled">
+              <a href="/about-us">Sobre</a>
+            </li>
+
+            <li class="navigation__links-item navigation__links-item--disabled">
+              <a href="/policy">Política de privacidade</a>
+            </li>
+
+            <li class="navigation__links-item">
+              <a href="/sign-in">Login</a>
+            </li>
+
+            <li class="navigation__links-item">
+              <a href="/sign-in">Cadastre-se</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="main" data-id="main">
+        <div class="main__left welcome">
+          <h2 class="welcome__title">
+            Userless sua plataforma de gestão e controle de estoque.
+          </h2>
+
+          <p class="welcome__text">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa at
+            enim numquam nobis libero sit, deserunt fugiat ut sint sapiente ad.
+            In cupiditate excepturi eos quis nobis vel repellendus facilis.
+          </p>
+
+          <a href="/sign-in" class="welcome__anchor">Começe por aqui</a>
+        </div>
+
+        <div class="main__right"></div>
       </main>
     </div>
   </body>
